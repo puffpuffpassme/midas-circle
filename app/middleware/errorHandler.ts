@@ -3,7 +3,7 @@ export function errorHandler(
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) {
   switch (true) {
     case typeof err === "string":

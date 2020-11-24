@@ -24,7 +24,7 @@ export class UserController {
     }
     const token = await jwt.sign(
       data.toJSON(),
-      process.env.ACTIVATIONKEY || "",
+      process.env.ACTIVATIONKEY || ""
     );
     return token;
   }

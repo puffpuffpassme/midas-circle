@@ -6,8 +6,6 @@ const userController: UserController = new UserController();
 
 route.post("/signup", signupRequest);
 route.post("/signin", signinRequest);
-route.post("/size", sizeRequest);
-route.get("/size/:_id", getUserSize);
 route.get("/confirmation/:token", confirmation);
 
 function signupRequest(req: Request, res: Response, next: NextFunction) {
@@ -40,26 +38,6 @@ function confirmation(req: Request, res: Response, next: NextFunction) {
         message: "Email verification done..you can signin now.. ",
       })
     )
-    .catch(next);
-}
-function sizeRequest(req: Request, res: Response, next: NextFunction) {
-  userController
-    .updateSize(req.body)
-    .then(() =>
-      res.send({
-        message: "Size Updated ",
-      })
-    )
-    .catch(next);
-}
-function getUserSize(req: Request, res: Response, next: NextFunction) {
-  userController
-    .getSize(req.params._id)
-    .then((user) => {
-      res.send({
-        user,
-      });
-    })
     .catch(next);
 }
 export default route;
